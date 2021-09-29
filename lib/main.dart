@@ -24,7 +24,8 @@ class RandomWords extends StatefulWidget {
 
 class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
-  final _saved = <WordPair>{}; // Stores the word pairings that the user favorited
+  final _saved =
+      <WordPair>{}; // Stores the word pairings that the user favorited
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   @override
@@ -62,6 +63,15 @@ class _RandomWordsState extends State<RandomWords> {
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
       ),
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
